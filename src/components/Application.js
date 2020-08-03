@@ -1,16 +1,21 @@
 import React from "react";
-
 import "components/Application.scss";
+const classnames = require('classnames');
 
-export default function Application(props) {
+
+export default function Button(props) {
+  const buttonClass = classnames("button", {
+    "button--confirm": props.confirm,
+    "button--danger": props.danger
+  });
+
   return (
-    <main className="layout">
-      <section className="sidebar">
-        {/* Replace this with the sidebar elements during the "Project Setup & Familiarity" activity. */}
-      </section>
-      <section className="schedule">
-        {/* Replace this with the schedule elements durint the "The Scheduler" activity. */}
-      </section>
-    </main>
+    <button
+      className={buttonClass}
+      onClick={props.onClick}
+      disabled={props.disabled}
+    >
+      {props.children}
+    </button>
   );
 }
