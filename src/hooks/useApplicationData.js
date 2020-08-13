@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import axios from 'axios';
 
 export default function useApplicationData() {
-
   const [state, setState] = useState({
     day: "Monday",
     days: [],
@@ -42,10 +41,10 @@ export default function useApplicationData() {
       [id]: appointment
     };
 
-    const days = [...state.days]
-    const today = state.days.find(day => day.appointments.includes(id))
-    const numberOfSpots = remainingSpots(today, appointments)
-    today.spots = numberOfSpots
+    const days = [...state.days];
+    const today = state.days.find(day => day.appointments.includes(id));
+    const numberOfSpots = remainingSpots(today, appointments);
+    today.spots = numberOfSpots;
 
     const updateDays = state.days.map(day => {
       if (day.id === today.id) {
@@ -53,9 +52,8 @@ export default function useApplicationData() {
       } else {
         return day
       }
-    })
-    console.log(updateDays)
-  
+    });
+
     return axios.put(`/api/appointments/${id}`, appointment)
     .then((res) => {
       setState(
@@ -79,7 +77,6 @@ export default function useApplicationData() {
       [id]: appointment,
     };
   
-    const days = [...state.days]
     const today = state.days.find(day => day.appointments.includes(id))
     today.spots = remainingSpots(today, appointments)
 
@@ -105,5 +102,4 @@ export default function useApplicationData() {
   };
 
   return { state, setDay, bookInterview, cancelInterview };
-
-}
+};

@@ -12,7 +12,6 @@ export default function useVisualMode(initial) {
       newHistory = [
         ...newHistory.slice(0, newHistory.length - 1),
         mode];
-
     } else {
       newHistory = [...newHistory, mode];
     }
@@ -20,11 +19,9 @@ export default function useVisualMode(initial) {
     setHistory(newHistory);
   }
   function back() {
-
     if (history.length <= 1) {
       return;
     } else {
-      
       let newHistory = [...history];
       newHistory = history.slice(0, history.length - 1);
       setMode(newHistory[newHistory.length - 1]);

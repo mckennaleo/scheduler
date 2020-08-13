@@ -3,18 +3,18 @@ import Button from "components/Button";
 import InterviewerList from "components/InterviewerList";
 
 export default function Form(props) {
-  const [name, setName] = useState(props.name ? props.name : "")
-  const [error, setError] = useState("")
-  const [interviewer, setInterviewer] = useState(props.interviewer ? props.interviewer : null)
+  const [name, setName] = useState(props.name ? props.name : "");
+  const [error, setError] = useState("");
+  const [interviewer, setInterviewer] = useState(props.interviewer ? props.interviewer : null);
 
   const onInterviewerClick = (id) => {
     setInterviewer(id)
-  }
+  };
   const cancel = () => {
     setName("");
     setInterviewer(null);
     props.onCancel();
-  }
+  };
   
   const confirm = () => {
     if (name === "") {
@@ -29,22 +29,22 @@ export default function Form(props) {
     props.onSave(name, interviewer);
     setName("");
     setInterviewer(null);
-  }
+    };
     return (
       <main className="appointment__card appointment__card--create">
         <section className="appointment__card-left">
           <form autoComplete="off">
-          <input
-            className="appointment__create-input text--semi-bold"
-            name="name"
-            type="text"
-            placeholder="Enter Student Name"
-            value={name}
-            onChange={event => {
-              setName(event.target.value);
-            }}
-            data-testid="student-name-input"
-          />
+            <input
+              className="appointment__create-input text--semi-bold"
+              name="name"
+              type="text"
+              placeholder="Enter Student Name"
+              value={name}
+              onChange={event => {
+                setName(event.target.value);
+              }}
+              data-testid="student-name-input"
+            />
           </form>
           <section className="appointment__validation">
             {error}
@@ -60,13 +60,15 @@ export default function Form(props) {
           <section className="appointment__actions">
             <Button 
               danger
-              onClick={cancel}
-              >Cancel</Button>
+              onClick={cancel}>
+              Cancel
+            </Button>
             <Button 
               confirm
-              onClick={confirm}
-              >Save</Button>
+              onClick={confirm}>
+              Save
+            </Button>
           </section>
         </section>
       </main>
-    )}
+    )};

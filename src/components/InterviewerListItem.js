@@ -6,8 +6,7 @@ export default function InterviewerListItem(props) {
 
   let interviewersItemClass = classNames('interviewers__item', props.className, {
     "interviewers__item--selected": props.selected
-
-  })
+  });
 
 
   return (
@@ -19,10 +18,8 @@ export default function InterviewerListItem(props) {
     />
       {props.selected ? props.name : ""}
     </li>
-
-
   );
-}
+};
 
 
 
