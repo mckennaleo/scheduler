@@ -65,6 +65,7 @@ describe("Appointments", () => {
       cy.contains("Confirm")
       .click()
     // Sees that the appointment slot is empty
-    cy.get("[alt=Add]")
+    cy.contains(".appointment__card--show", "Archie Cohen")
+    .should("not.exist");
   })
 });
